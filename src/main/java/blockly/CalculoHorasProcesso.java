@@ -17,7 +17,7 @@ public static final int TIMEOUT = 300;
  * CalculoHorasProcesso
  *
  * @author Lucas Oliveira Da Silva
- * @since 16/09/2022 11:42:05
+ * @since 16/09/2022 15:50:03
  *
  */
 public static Var alterarHoraInicioFim() throws Exception {
@@ -57,7 +57,7 @@ public static Var alterarHoraInicioFim() throws Exception {
  * Descreva esta função...
  *
  * @author Lucas Oliveira Da Silva
- * @since 16/09/2022 11:42:05
+ * @since 16/09/2022 15:50:03
  *
  */
 public static void calcularTotalHoras() throws Exception {
