@@ -1,0 +1,170 @@
+{
+  "customId": "query901550",
+  "queryName": "ParticipanteChecklist",
+  "sourceType": "entityFullName",
+  "baseEntity": null,
+  "blockly": null,
+  "entitySimpleName": "Checklist",
+  "entityFullName": "app.entity.Checklist",
+  "query": {
+    "isValid": true,
+    "isEmpty": false,
+    "operationType": "object",
+    "type": "select",
+    "rulesEntity": [
+      {
+        "entity": "Checklist",
+        "namespace": "app.entity.Checklist",
+        "alias": "c"
+      }
+    ],
+    "rulesSelect": [
+      {
+        "func": "get",
+        "field": "c",
+        "type": "string"
+      }
+    ],
+    "rulesGroupBy": [],
+    "rulesHaving": [],
+    "rulesOrderBy": [],
+    "rules": {
+      "condition": "AND",
+      "rules": [
+        {
+          "id": "c.participante.user.normalizedUserName",
+          "field": "c.participante.user.normalizedUserName",
+          "type": "string",
+          "input": "text",
+          "operator": "equal",
+          "value": ":participanteUserNormalizedUserName",
+          "valueIsField": false
+        }
+      ],
+      "not": false,
+      "valid": true
+    },
+    "isRawSql": false,
+    "multiTenant": false,
+    "paginatorAutomatic": false,
+    "pagination": false
+  },
+  "queryParamsValues": [
+    {
+      "fieldName": "participanteUserNormalizedUserName",
+      "fieldValue": {
+        "type": "server",
+        "blocklyMethod": "obterLoginUsuraioLogado",
+        "blocklyClass": "blockly.Participante",
+        "blocklyLanguage": "java",
+        "blocklyParams": [
+          {
+            "id": "941eb4d0",
+            "name": "Entidade\u0026lt;app.entity.Participante\u0026gt;",
+            "value": "null",
+            "type": "CUSTOM"
+          }
+        ],
+        "blocklyJson": {
+          "namespace": "blockly.Participante",
+          "sourcePath": "src/main/java/blockly/Participante.blockly",
+          "language": "java",
+          "methods": [
+            {
+              "name": "obterLoginUsuraioLogado",
+              "hasReturn": "true",
+              "params": [
+                "Entidade\u0026lt;app.entity.Participante\u0026gt;"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "verbs": {
+    "GET": true,
+    "GETAuthorities": null,
+    "POST": false,
+    "POSTAuthorities": null,
+    "PUT": true,
+    "PUTAuthorities": null,
+    "DELETE": false,
+    "DELETEAuthorities": null,
+    "FILTER": true,
+    "FILTERAuthorities": null,
+    "COUNT": true,
+    "COUNTAuthorities": null
+  },
+  "events": {
+    "beforeInsert": null,
+    "beforeUpdate": null,
+    "beforeDelete": null,
+    "afterInsert": null,
+    "afterUpdate": null,
+    "afterDelete": null,
+    "onNavigate": null,
+    "onAuthorize": null,
+    "onError": null
+  },
+  "defaultValues": {
+    "id": null,
+    "nome_item": null,
+    "realizado": null,
+    "participante": {
+      "type": "server",
+      "blocklyMethod": "obterIdParticipanteLogado",
+      "blocklyClass": "blockly.Participante",
+      "blocklyLanguage": "java",
+      "blocklyParams": [],
+      "blocklyJson": {
+        "namespace": "blockly.Participante",
+        "sourcePath": "src/main/java/blockly/Participante.blockly",
+        "language": "java",
+        "methods": [
+          {
+            "name": "obterLoginUsuraioLogado",
+            "hasReturn": "true",
+            "params": [
+              "Entidade\u0026lt;app.entity.Participante\u0026gt;"
+            ]
+          },
+          {
+            "name": "obterIdParticipanteLogado",
+            "hasReturn": "true",
+            "params": []
+          }
+        ]
+      },
+      "blocklyGETMethod": null,
+      "blocklyPOSTMethod": null,
+      "blocklyPUTMethod": null,
+      "blocklyDELETEMethod": null,
+      "blocklyFILTERMethod": null,
+      "blocklyCOUNTMethod": null
+    }
+  },
+  "defaultValuesProperties": {
+    "id": null,
+    "nome_item": null,
+    "realizado": null,
+    "participante": null
+  },
+  "security": {
+    "id": null,
+    "nome_item": null,
+    "realizado": null,
+    "participante": null
+  },
+  "calcFields": {},
+  "calcFieldsSecurity": {},
+  "calcFieldsProperties": {},
+  "headers": {},
+  "errorHandles": {
+    "primaryKey": null,
+    "foreignKey": null
+  },
+  "serviceUrl": "api/cronapi/odata/v2/app/query901550/",
+  "audit": false,
+  "swagger": false
+}
