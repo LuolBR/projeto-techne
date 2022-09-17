@@ -46,7 +46,7 @@
             </div>
             <div class="active-bar" ng-hide="!datasource.editing &amp;&amp; !datasource.inserting">
                 <div class="component-holder ng-scope" data-component="crn-button" id="btn_crud_post_10678">
-                    <button class="btn k-button btn-block btn-success btn-fab" ng-click="datasource.post()" aria-label="{{'SaveChanges' | translate}}" xattr-fullsize="btn-block" xattr-theme="btn-success" xattr-disabled="">
+                    <button class="btn k-button btn-block btn-success btn-fab" ng-click="cronapi.client('js.blockly.Participantes.confirmar_envio').run()" aria-label="{{'SaveChanges' | translate}}" xattr-fullsize="btn-block" xattr-theme="btn-success" xattr-disabled="">
                         <i class="glyphicon glyphicon-ok" icon-theme=""></i>
                     </button>
                 </div>
@@ -71,7 +71,7 @@
                     <div data-component="crn-textinput" id="crn-textinput-idade-10678" class="">
                         <div class="form-group">
                                 <label for="textinput-idade" class="">{{'Idade' | translate}}</label>
-                                <input type="integer" ng-model="Participante.active.idade" class="form-control k-textbox" id="textinput-idade" placeholder="{{'Idade' | translate}}" mask="" mask-placeholder="" ng-required="true">
+                                <input type="integer" ng-model="Participante.active.idade" class="form-control k-textbox" id="textinput-idade" placeholder="{{'Idade' | translate}}" mask="" mask-placeholder="" ng-required="true" ng-blur="cronapi.client('js.blockly.Participantes.verificar_idade').run()">
                         </div>
                     </div>
 
