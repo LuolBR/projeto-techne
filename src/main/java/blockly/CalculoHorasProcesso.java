@@ -17,7 +17,7 @@ public static final int TIMEOUT = 300;
  * CalculoHorasProcesso
  *
  * @author Lucas Oliveira Da Silva
- * @since 16/09/2022 15:50:03
+ * @since 17/09/2022 11:22:13
  *
  */
 public static Var alterarHoraInicioFim() throws Exception {
@@ -42,10 +42,7 @@ public static Var alterarHoraInicioFim() throws Exception {
     Var.valueOf("Aprovado"))).getObjectAsBoolean() ||
     Var.valueOf(status.equals(
     Var.valueOf("Reprovado"))).getObjectAsBoolean()).getObjectAsBoolean()) {
-        cronapi.util.Operations.callClientFunction(Var.valueOf("cronapi.screen.changeValueOfField"),
-        Var.valueOf("Participante.active.fim_processo"),
-        cronapi.dateTime.Operations.getNow());
-        calcularTotalHoras();
+        concluirProcesso();
     }
     return Var.VAR_NULL;
    }
@@ -57,7 +54,7 @@ public static Var alterarHoraInicioFim() throws Exception {
  * Descreva esta função...
  *
  * @author Lucas Oliveira Da Silva
- * @since 16/09/2022 15:50:03
+ * @since 17/09/2022 11:22:13
  *
  */
 public static void calcularTotalHoras() throws Exception {
@@ -71,6 +68,64 @@ public static void calcularTotalHoras() throws Exception {
     cronapi.screen.Operations.getValueOfField(
     Var.valueOf("Participante.active.inicio_processo"))));
    return Var.VAR_NULL;
+   }
+ }.call();
+}
+
+/**
+ *
+ * Descreva esta função...
+ *
+ * @author Lucas Oliveira Da Silva
+ * @since 17/09/2022 11:22:13
+ *
+ */
+public static void concluirProcesso() throws Exception {
+  new Callable<Var>() {
+
+   public Var call() throws Exception {
+    if (
+    Var.valueOf(
+    Var.valueOf(validarCampoNulo(
+    cronapi.screen.Operations.getValueOfField(
+    Var.valueOf("Participante.active.inicio_processo")))).equals(
+    Var.VAR_FALSE)).getObjectAsBoolean()) {
+        cronapi.util.Operations.callClientFunction( Var.valueOf("cronapi.screen.notify"), Var.valueOf("error"),
+        Var.valueOf("Favor primeiro iniciar processo de avaliação! Status Participante -> Em processo de avaliação"));
+    } else {
+        cronapi.util.Operations.callClientFunction(Var.valueOf("cronapi.screen.changeValueOfField"),
+        Var.valueOf("Participante.active.fim_processo"),
+        cronapi.dateTime.Operations.getNow());
+        calcularTotalHoras();
+    }
+   return Var.VAR_NULL;
+   }
+ }.call();
+}
+
+/**
+ *
+ * @param campo
+ *
+ * @author Lucas Oliveira Da Silva
+ * @since 17/09/2022 11:22:13
+ *
+ */
+public static Var validarCampoNulo(@ParamMetaData(description = "campo", id = "a850afad") Var campo) throws Exception {
+ return new Callable<Var>() {
+
+   private Var valido = Var.VAR_NULL;
+
+   public Var call() throws Exception {
+    if (
+    cronapi.logic.Operations.isNullOrEmpty(campo).getObjectAsBoolean()) {
+        valido =
+        Var.VAR_FALSE;
+    } else {
+        valido =
+        Var.VAR_TRUE;
+    }
+    return valido;
    }
  }.call();
 }
